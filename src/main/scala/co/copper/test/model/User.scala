@@ -1,6 +1,6 @@
 package co.copper.test.model
 
-import javax.persistence.{Column, Entity, GeneratedValue, GenerationType, Id, Table}
+import javax.persistence._
 import javax.validation.constraints.NotEmpty
 import scala.beans.BeanProperty
 

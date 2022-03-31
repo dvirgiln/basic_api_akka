@@ -1,9 +1,7 @@
 package co.copper.test.routes
 
 import akka.http.scaladsl.model.StatusCodes
-import akka.http.scaladsl.server.Directives.{concat, get, path}
-import co.copper.test.dto.Error
-import co.copper.test.services.{PostmanService, UserService}
+import co.copper.test.services.UserService
 import com.sbuslab.http.RestRoutes
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component

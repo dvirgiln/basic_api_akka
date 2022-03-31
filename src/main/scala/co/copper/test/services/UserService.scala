@@ -6,9 +6,9 @@ import akka.http.scaladsl.model.{HttpMethods, HttpRequest, HttpResponse, StatusC
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import akka.stream.ActorMaterializer
 import co.copper.test.dto.external.{RandomUser, RandomUsers}
-import co.copper.test.dto.{Error, PostmanDto, UserDto}
-import co.copper.test.model.{Postman, User}
-import co.copper.test.repositories.{PostmanRepository, UserRepository}
+import co.copper.test.dto.{Error, UserDto}
+import co.copper.test.model.User
+import co.copper.test.repositories.UserRepository
 import com.sbuslab.utils.Logging
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,11 +24,10 @@ class UserService(repository: UserRepository)(implicit
                                               system: ActorSystem,
                                               materializer: ActorMaterializer
 ) extends Logging {
-  private val url = "https://randomuser.me/api?results=20"
-  private val logger = LoggerFactory.getLogger(classOf[UserPersistActor])
-  import co.copper.test.util.ImplicitConversions._
-
   lazy val persistUserActor: ActorRef = system.actorOf(Props(new UserPersistActor((repository))), "persistUserActor")
+  private val url = "https://randomuser.me/api?results=20"
+  import co.copper.test.util.ImplicitConversions._
+  private val logger = LoggerFactory.getLogger(classOf[UserPersistActor])
 
   def getById(id: Long): Future[Option[UserDto]] = {
     val latest = repository.findById(id)

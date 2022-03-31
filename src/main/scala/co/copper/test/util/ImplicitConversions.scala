@@ -1,6 +1,6 @@
 package co.copper.test.util
 
-import co.copper.test.dto.external.{RandomUser, RandomUsers}
+import co.copper.test.dto.external.RandomUsers
 import co.copper.test.dto.{PostmanDto, UserDto, UsersDto}
 import co.copper.test.util.ScalaUnmarshaller.unmarshall
 

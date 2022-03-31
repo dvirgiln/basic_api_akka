@@ -1,11 +1,9 @@
 package co.copper.test.services
 
-import akka.actor.{Actor, ActorLogging, Props}
+import akka.actor.{Actor, ActorLogging}
 import co.copper.test.model.User
 import co.copper.test.repositories.UserRepository
 import org.slf4j.LoggerFactory
-
-import java.util.UUID
 
 sealed trait UserCommand
 case class SaveUser(user: User)
